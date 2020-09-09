@@ -1,0 +1,87 @@
+@page "/registro/criar"
+
+<h3>Novo Registro</h3>
+
+<EditForm Model="registro" OnValidSubmit="Create">
+    <DataAnnotationsValidator/>
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label>Selecione um título</label>
+            <div>
+                <InputSelect class="form-control" @bind-Value="@registro.Title">
+                    <option hidden >Selecione uma opção</option>
+                    <option> Star Wars: Episódio V – O Império Contra-Ataca </option>
+                    <option> Parasita </option>
+                    <option> Pantera Negra </option>
+                </InputSelect>
+                <ValidationMessage For="@( () => registro.Title )" />
+            </div>
+        </div>
+        <div class="form-group col-md-3">
+            <label>Insira seu nome</label>
+            <div>
+                <InputText class="form-control" @bind-Value="@registro.FirstName" />
+                <ValidationMessage For="@( () => registro.FirstName )" />
+            </div>
+        </div>
+        <div class="form-group col-md-3">
+            <label>Insira seu sobrenome</label>
+            <div>
+                <InputText class="form-control" @bind-Value="@registro.LastName" />
+                <ValidationMessage For="@( () => registro.LastName )" />
+            </div>
+        </div>
+        <div class="form-group col-md-3">
+            <label>Data de nascimento</label>
+            <InputDate placeholder="dd/mm/yyyy" class="form-control" @bind-Value="@registro.DateBirth"/> 
+            <ValidationMessage For="@( () => registro.DateBirth )" />
+        </div>
+        <div class="form-group col-md-3">
+            <label>Insira seu e-mail</label>
+            <div>
+                <InputText class="form-control" @bind-Value="@registro.Email" />
+                <ValidationMessage For="@( () => registro.Email )" />
+            </div>
+        </div>
+        <div class="form-group col-md-3">
+            <label>Insira uma senha</label>
+            <div>
+                <InputText type="password" class="form-control" @bind-Value="@registro.Password" />
+                <ValidationMessage For="@( () => registro.Password )" />
+            </div>
+        </div>
+        <div class="form-group col-md-3">
+            <label>Confirmação da senha</label>
+            <div>
+                <InputText type="password" class="form-control" @bind-Value="@registro.ConfirmPassword"/>
+                <ValidationMessage For="@( () => registro.ConfirmPassword )" />
+            </div>
+        </div>
+        <div class="form-group col-md-11">
+            <InputCheckbox class="form-check-input" @bind-Value="@registro.Accept"/>
+            <label>Aceitar os termos e condições</label>
+            <ValidationMessage For="@( () => registro.Accept )" />
+        </div>
+    </div>
+    <div class="row justify-content-md-center">
+        <div>
+            <button class="btn btn-success" type="submit">Registrar</button>
+            <button class="btn btn-secondary" type="reset">Cancelar</button>
+        </div>
+    </div>
+</EditForm>
+
+@code {
+    Registro registro = new Registro();
+
+    private void Create()
+    {
+        Console.WriteLine(registro.Title);
+        Console.WriteLine(registro.FirstName);
+        Console.WriteLine(registro.LastName);
+        Console.WriteLine(registro.DateBirth);
+        Console.WriteLine(registro.Email);
+        Console.WriteLine(registro.Password);
+        Console.WriteLine(registro.ConfirmPassword);
+    }
+}
