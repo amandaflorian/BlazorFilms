@@ -1,4 +1,6 @@
 @page "/registro/criar"
+@using System.Net.Http
+@inject HttpClient Http
 
 <h3>Novo Registro</h3>
 
@@ -74,14 +76,9 @@
 @code {
     Registro registro = new Registro();
 
-    private void Create()
+    private async Task Create()
     {
-        Console.WriteLine(registro.Title);
-        Console.WriteLine(registro.FirstName);
-        Console.WriteLine(registro.LastName);
-        Console.WriteLine(registro.DateBirth);
-        Console.WriteLine(registro.Email);
-        Console.WriteLine(registro.Password);
-        Console.WriteLine(registro.ConfirmPassword);
+        
+       var teste = await Http.PostAsJsonAsync("/RegisterController/Create", registro);
     }
 }
