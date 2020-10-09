@@ -23,7 +23,7 @@ namespace BlazorFilmes.Server
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllersWithViews();
+           //////////// services.AddController<ApplicationDBContext>(OptionsBuilderConfigurationExtensions);
             services.AddRazorPages();
         }
 

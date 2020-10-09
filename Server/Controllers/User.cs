@@ -1,6 +1,9 @@
 namespace Server.Controllers
 {
-    public class User
+    public class Registro
     {
+        Id
+
+        ....
     }
 }
